@@ -1,15 +1,28 @@
 import { useRouter } from "expo-router";
-import { View, Text } from "react-native";
-
-import Button from "@/src/components/atoms/Button";
+import { Pressable, View, Text } from "react-native";
 
 export default function LoginScreen() {
   const router = useRouter();
-
   return (
     <View>
-      <Text>Login</Text>
-      <Button text="Sign Up" onPress={() => router.push("/auth/signup")} />
+      <Pressable
+        style={({ pressed }) => [
+          { backgroundColor: pressed ? "blue" : "red" },
+          {
+            width: "100%",
+            padding: 30,
+          },
+        ]}
+        onPress={() => router.push("/auth/signup")}
+      >
+        <Text
+          style={{
+            textAlign: "center",
+          }}
+        >
+          Press me
+        </Text>
+      </Pressable>
     </View>
   );
 }
